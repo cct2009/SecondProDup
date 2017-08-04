@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Second Pro Dup</string>
+    <string name="buy_it">Buy</string>
+    <string name="you_want_to_buy_format">You want to buy %1$s</string>
+    <string name="you_want_info_about_format">You want information about %1$s</string>
+
+</resources>

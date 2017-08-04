@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tk.cct49.secondprodup.ShowTimerPack">
+
+
+    <ImageView
+        android:id="@+id/pack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:srcCompat="@android:drawable/btn_dialog"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pack_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="My Timers abcdefghi this is the multipline"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintLeft_toRightOf="@+id/pack"
+        app:layout_constraintRight_toLeftOf="@+id/edit_pack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timer_counts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="1 Timers"
+        app:layout_constraintLeft_toLeftOf="@+id/pack_name"
+        app:layout_constraintRight_toLeftOf="@+id/edit_pack"
+        app:layout_constraintTop_toBottomOf="@+id/pack_name" />
+
+    <ImageButton
+        android:id="@+id/edit_pack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@android:drawable/ic_menu_edit" />
+
+</android.support.constraint.ConstraintLayout>
+			
