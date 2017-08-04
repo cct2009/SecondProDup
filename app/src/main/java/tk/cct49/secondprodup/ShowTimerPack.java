@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+// vers 2
 public class ShowTimerPack extends ListActivity {
 
     private static final String STAR_STATES = "listviewtipsandtricks:star_states";
