@@ -1,31 +1,33 @@
 package tk.cct49.secondprodup;
 
-import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-// vers 2
-public class ShowTimerPack extends ListActivity {
 
-    private static final String STAR_STATES = "listviewtipsandtricks:star_states";
-    public static final String CHEESES[] = {
-            "My Timer multiple line abasdfasfdasfa  1123234234  new line and you", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi", "Acorn", "Adelost", "Affidelice au Chablis",
-            "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre", "Allgauer Emmentaler", "Alverca", "Ambert", "American Cheese",
-            "Ami du Chambertin", "Anejo Enchilado", "Anneau du Vic-Bilh", "Anthoriro", "Appenzell", "Aragon", "Ardi Gasna", "Ardrahan"
+// 8/4/2017 - 6:12PM
+// change ShowTimerPack to extend from AppCompatActivity
+public class ShowTimerPack extends AppCompatActivity {
 
+    public static final String PACKNAME[] = {
+            "My Timers", "Sample Timers", "Dummy 3","Dummy 4","Dummy multiline \nSecond line ,I will clone this app and make it the first app","Dummy6",
+            "Dummy 7","Dummy 8 Wow \\n can use for new line good.\nSecond Line again","Dummy9"
     };
-    private boolean[] mStarStates;
-
+    public static final int TIMERCOUNTS[] = { 5, 1,4,4,10,12,3,2,6};
+    // private boolean[] mStarStates;
+    private ListView lv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_timer_pack);
-
+         lv = (ListView) findViewById(R.id.list);
         // The following code allows the Activity to restore its state after it
         // has been killed by the system (low memory condition, configuration
         // change, etc.)
@@ -36,7 +38,17 @@ public class ShowTimerPack extends ListActivity {
         }
 
         AccessoriesAdapter mAdapter = new AccessoriesAdapter();
-        setListAdapter(mAdapter);
+
+        lv.setAdapter(mAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ShowTimerPack.this, ListTimers.class);
+                intent.putExtra("packName",PACKNAME[position]);
+                intent.putExtra("timerCounts",TIMERCOUNTS[position]);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -44,12 +56,11 @@ public class ShowTimerPack extends ListActivity {
         super.onSaveInstanceState(outState);
 //        outState.putBooleanArray(STAR_STATES, mStarStates);
     }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        showMessage(getString(R.string.you_want_info_about_format, CHEESES[position]));
-    }
-
+/*
+        private void onListItemClick(ListView l, View v, int position, long id) {
+            showMessage(getString(R.string.you_want_info_about_format, CHEESES[position]));
+        }
+      */
     /**
      * A pretty basic ViewHolder used to keep references on children
      * {@link View}s.
@@ -70,12 +81,12 @@ public class ShowTimerPack extends ListActivity {
 
         @Override
         public int getCount() {
-            return CHEESES.length;
+            return PACKNAME.length;
         }
 
         @Override
         public String getItem(int position) {
-            return CHEESES[position];
+            return PACKNAME[position];
         }
 
         @Override
@@ -94,7 +105,6 @@ public class ShowTimerPack extends ListActivity {
                 holder = new AccessoriesViewHolder();
                 holder.packName= (TextView) convertView.findViewById(R.id.pack_name);
                 holder.timerCounts= (TextView) convertView.findViewById(R.id.timer_counts);
-                ImageButton img = (ImageButton) convertView.findViewById(R.id.edit_pack);
 
                 ((ImageButton) convertView.findViewById(R.id.edit_pack)).setOnClickListener(mEditClickListener);
 
@@ -114,8 +124,12 @@ public class ShowTimerPack extends ListActivity {
              */
             //   holder.star.setOnCheckedChangeListener(null);
 
-            holder.packName.setText(CHEESES[position]);
-            holder.timerCounts.setText("1 Times");
+            holder.packName.setText(PACKNAME[position]);
+            StringBuilder s= new StringBuilder(20);
+            s.append(TIMERCOUNTS[position]);
+            s.append(" Time");
+            if (TIMERCOUNTS[position] > 1 ) s.append("s");
+            holder.timerCounts.setText(s);
 
             return convertView;
         }
@@ -133,9 +147,9 @@ public class ShowTimerPack extends ListActivity {
     private View.OnClickListener mEditClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            final int position = getListView().getPositionForView(v);
+            final int position = lv.getPositionForView(v);
             if (position != ListView.INVALID_POSITION) {
-                showMessage(getString(R.string.you_want_to_buy_format, CHEESES[position]));
+
             }
         }
     };

@@ -16,6 +16,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ListTimers"
+            android:label="@string/title_activity_list_timers"
+            android:parentActivityName=".ShowTimerPack"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.cct49.secondprodup.ShowTimerPack" />
+        </activity>
+        <activity
+            android:name=".TimerRun"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_timer_run"
+            android:parentActivityName=".ShowTimerPack"
+            android:theme="@style/FullscreenTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.cct49.secondprodup.ShowTimerPack" />
+        </activity>
     </application>
 
 </manifest>
