@@ -57,10 +57,10 @@ public class ListTimers extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(ListTimers.this, ListTimers.class);
-//                intent.putExtra("packName",TIMERNAME[position]);
-//                intent.putExtra("timerCounts",TIMERDESC[position]);
-//                startActivity(intent);
+                Intent intent = new Intent(ListTimers.this, TimerRun.class);
+                intent.putExtra("packName",TIMERNAME[position]);
+                intent.putExtra("timerCounts",TIMERDESC[position]);
+                startActivity(intent);
             }
         });
 

@@ -29,11 +29,11 @@
             android:name=".TimerRun"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_timer_run"
-            android:parentActivityName=".ShowTimerPack"
+            android:parentActivityName=".ListTimers"
             android:theme="@style/FullscreenTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tk.cct49.secondprodup.ShowTimerPack" />
+                android:value="tk.cct49.secondprodup.ListTimers" />
         </activity>
     </application>
 

@@ -1,6 +1,7 @@
 package tk.cct49.secondprodup;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,20 +71,33 @@ public class TimerRun extends AppCompatActivity {
             hide();
         }
     };
+
+    //
+    private static class TimerBox {
+        public String boxName;
+        public int seconds;
+        public int color;
+
+        public TimerBox(String box,int sec, int col)
+        {
+            boxName = box; seconds = sec; color = col;
+        }
+    }
+    private TimerBox[]  timerBox;
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
-        }
-    };
+//    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+//        @Override
+//        public boolean onTouch(View view, MotionEvent motionEvent) {
+//            if (AUTO_HIDE) {
+//                delayedHide(AUTO_HIDE_DELAY_MILLIS);
+//            }
+//            return false;
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +109,7 @@ public class TimerRun extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mVisible = true;
+        mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
@@ -111,9 +125,28 @@ public class TimerRun extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-    }
+//        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
+        // my <code>
+        InitTimerBox();
+
+
+        // </code>
+
+    }
+    private void InitTimerBox() {
+        timerBox  = new TimerBox[10];
+        timerBox[0] = new TimerBox("Stretch",60, Color.RED);
+        timerBox[1] = new TimerBox("Stretch",60, Color.RED);
+        timerBox[2] = new TimerBox("Stretch",60, Color.RED);
+        timerBox[3] = new TimerBox("Warmup",120, Color.BLACK);
+        timerBox[4] = new TimerBox("Jumping Rope",720, Color.GREEN);
+        timerBox[5] = new TimerBox("Rest",120, Color.CYAN);
+        timerBox[6] = new TimerBox("Jumping Rope",720, Color.GREEN);
+        timerBox[7] = new TimerBox("Rest",120, Color.CYAN);
+        timerBox[8] = new TimerBox("Jumping Rope",720, Color.GREEN);
+        timerBox[9] = new TimerBox("Rest",120, Color.CYAN);
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

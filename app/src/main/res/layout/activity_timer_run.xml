@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,25 +27,130 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="top|center_horizontal"
             android:background="@color/black_overlay"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
+            <!--<Button-->
+            <!--android:id="@+id/dummy_button"-->
+            <!--style="?metaButtonBarButtonStyle"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/dummy_button"-->
+            <!--tools:layout_editor_absoluteY="1030dp"-->
+            <!--tools:layout_editor_absoluteX="0dp" />-->
+
+            <TextView
+                android:id="@+id/curCounter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:text="10:00"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="136sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/totalRemainLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Total Remaining"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/intervalLbl"
+                app:layout_constraintTop_toBottomOf="@+id/curCounter" />
+
+
+            <TextView
+                android:id="@+id/intervalLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Interval"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/totalRemainLbl"
+                app:layout_constraintRight_toLeftOf="@+id/totalElapsedLbl"
+                app:layout_constraintTop_toBottomOf="@+id/curCounter" />
+
+
+            <TextView
+                android:id="@+id/totalElapsedLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="end"
+                android:text="Total Elapsed"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/intervalLbl"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/curCounter" />
+
+            <TextView
+                android:id="@+id/totalRemain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="-1dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="30:00"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/interval"
+                app:layout_constraintTop_toBottomOf="@+id/totalRemainLbl" />
+
+            <TextView
+                android:id="@+id/interval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="1/2"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/totalRemain"
+                app:layout_constraintRight_toLeftOf="@+id/totalElapsed"
+                app:layout_constraintTop_toTopOf="@+id/totalRemain" />
+
+            <TextView
+                android:id="@+id/totalElapsed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="end"
+                android:text="00:00"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/interval"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/interval" />
+        </android.support.constraint.ConstraintLayout>
     </FrameLayout>
 
 </FrameLayout>
