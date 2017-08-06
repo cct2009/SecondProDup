@@ -113,17 +113,6 @@ public class ShowTimerPack extends AppCompatActivity {
                 holder = (AccessoriesViewHolder) convertView.getTag();
             }
 
-            /*
-             * The Android API provides the OnCheckedChangeListener interface
-             * and its onCheckedChanged(CompoundButton buttonView, boolean
-             * isChecked) method. Unfortunately, this implementation suffers
-             * from a big problem: you can't determine whether the checking
-             * state changed from code or because of a user action. As a result
-             * the only way we have is to prevent the CheckBox from callbacking
-             * our listener by temporary removing the listener.
-             */
-            //   holder.star.setOnCheckedChangeListener(null);
-
             holder.packName.setText(PACKNAME[position]);
             StringBuilder s= new StringBuilder(20);
             s.append(TIMERCOUNTS[position]);

@@ -26,7 +26,7 @@
                 android:value="tk.cct49.secondprodup.ShowTimerPack" />
         </activity>
         <activity
-            android:name=".TimerRun"
+            android:name=".TimerRun2"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_timer_run"
             android:parentActivityName=".ListTimers"
@@ -35,6 +35,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tk.cct49.secondprodup.ListTimers" />
         </activity>
+        <activity android:name=".TimerRun"></activity>
     </application>
 
 </manifest>
